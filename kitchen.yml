@@ -1,0 +1,35 @@
+---
+
+driver:
+  name: vagrant
+  customize:
+    cpus: 2
+    memory: 4096
+
+transport:
+  name: winrm
+  elevated: true
+
+provisioner:
+  name: chef_zero
+  deprecations_as_errors: true
+  product_name: chef
+  channel: stable
+  chef_license: accept    
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: windows-2019
+    driver_config:
+      box: tas50/windows_2019    
+
+suites:
+  - name: default
+    run_list:
+      - recipe[chef-conda]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
