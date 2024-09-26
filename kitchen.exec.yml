@@ -11,3 +11,12 @@ provisioner:
 
 platforms:
   - name: windows-latest
+
+suites:
+  - name: default
+    run_list:
+      - recipe[chef-conda]
+    verifier:
+      inspec_tests:
+        - test/integration/installation
+    attributes:
