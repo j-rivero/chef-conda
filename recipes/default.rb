@@ -6,10 +6,16 @@
 #
 
 username = node['conda']['user']
+user_password = node['conda']['user']['password']
 
 miniforge_installer = "C:\\Users\\#{username}\\miniforge.exe"
 miniforge_install = "C:\\Users\\#{username}\\Miniforge3"
 miniforge_exe = "#{miniforge_install}\\condabin\conda"
+
+user username do
+  password user_password
+  manage_home true
+end
 
 remote_file miniforge_installer do
   source 'https://github.com/conda-forge/miniforge/releases/download/24.7.1-0/Miniforge3-Windows-x86_64.exe'

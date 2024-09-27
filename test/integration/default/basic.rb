@@ -4,7 +4,7 @@ miniforge_exe = "#{miniforge_install}\\condabin\conda"
 
 control 'miniforge install' do
   impact 'critical'
-  title 'User jenkins should present in the system'
+  title 'Miniforge conda binary needs to be in the system'
   # attributes are not directly accesible from inspec. Hardcoding user here
   describe file(miniforge_exe) do
     it { should exist }
