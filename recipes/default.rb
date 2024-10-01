@@ -5,7 +5,7 @@
 # Copyright:: 2022, Open Source Robotics Foundation.
 #
 
-username = node['conda']['user']
+username = node['conda']['user']['name']
 user_password = node['conda']['user']['password']
 
 miniforge_installer = "C:\\Users\\#{username}\\miniforge.exe"
