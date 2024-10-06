@@ -17,6 +17,14 @@ user username do
   manage_home true
 end
 
+directory "C:\\Users\#{username}" do
+  user username
+  password user_password
+  owner username
+  recursive true
+  action :create
+end
+
 remote_file miniforge_installer do
   source 'https://github.com/conda-forge/miniforge/releases/download/24.7.1-0/Miniforge3-Windows-x86_64.exe'
   owner username
