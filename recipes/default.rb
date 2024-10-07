@@ -8,8 +8,9 @@
 username = node['conda']['user']['name']
 user_password = node['conda']['user']['password']
 
-miniforge_installer = "C:\\Users\\#{username}\\miniforge.exe"
-miniforge_install = "C:\\Users\\#{username}\\Miniforge3"
+user_home = "C:\\Users\\#{username}"
+miniforge_installer = "#{user_home}\\miniforge.exe"
+miniforge_install = "#{user_home}\\Miniforge3"
 miniforge_exe = "#{miniforge_install}\\condabin\conda"
 
 user username do
@@ -24,7 +25,7 @@ group 'Administrators' do
   action :modify
 end
 
-directory "C:\\Users\#{username}" do
+directory user_home do
   # user username
   # password user_password
   owner username
