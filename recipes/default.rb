@@ -14,12 +14,19 @@ miniforge_exe = "#{miniforge_install}\\condabin\conda"
 
 user username do
   password user_password
+  comment 'Jenkis agent username'
   manage_home true
 end
 
+group 'Administrators' do
+  members [username]
+  append true
+  action :modify
+end
+
 directory "C:\\Users\#{username}" do
-  user username
-  password user_password
+  # user username
+  # password user_password
   owner username
   recursive true
   action :create
@@ -27,7 +34,7 @@ end
 
 remote_file miniforge_installer do
   source 'https://github.com/conda-forge/miniforge/releases/download/24.7.1-0/Miniforge3-Windows-x86_64.exe'
-  owner username
+  user username
   retries 5
 end
 
