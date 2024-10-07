@@ -42,11 +42,13 @@ end
 batch 'install_miniforge' do
   user username
   password user_password
+  sensitive false
   code "start /wait \"\" #{miniforge_installer} /InstallationType=JustMe /RegisterPython=0 /S /D=#{miniforge_install}"
 end
 
 batch 'run help' do
   user username
   password user_password
+  sensitive false
   code "#{miniforge_exe} /help"
 end
