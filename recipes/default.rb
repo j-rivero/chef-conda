@@ -11,7 +11,7 @@ user_password = node['conda']['user']['password']
 user_home = "C:\\Users\\#{username}"
 miniforge_installer = "#{user_home}\\miniforge.exe"
 miniforge_install = "#{user_home}\\Miniforge3"
-miniforge_exe = "#{miniforge_install}\\condabin\conda"
+miniforge_exe = "#{miniforge_install}\\condabin\\conda.bat"
 
 user username do
   password user_password
